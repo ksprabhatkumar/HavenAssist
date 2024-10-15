@@ -1,6 +1,8 @@
+"use client";
 import React from 'react'
 import Image from 'next/image'
 import {Button} from '@/components/ui/button'
+import { signIn, signOut } from "next-auth/react"
 function Header() {
   return (
     <div className='p-5 shadow-md flex justify-between'>
@@ -17,7 +19,8 @@ function Header() {
       
       </div>
       <div>
-            <Button className='hover:scale-105'>Get Started</Button>
+
+            <Button onClick={() => signIn()} className='hover:scale-105'>Get Started</Button>
       </div>
     </div>
   )
