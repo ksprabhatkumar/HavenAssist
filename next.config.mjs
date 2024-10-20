@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
-
-// next.config.js
+const nextConfig = {
+    images: {
+      domains: ['example.com'], // Add the external domains you want to allow
+    },
+  };
+  
+  export default nextConfig;
+  

@@ -24,12 +24,24 @@ function BusinessList({businessList,title}) {
                     />
                     <div className='flex flex-col 
                     items-baseline p-3 gap-1'>
-                        <h2 className='p-1 bg-purple-200
-                        text-primary rounded-full px-2
-                         text-[12px]'>{business.category.name}</h2>
+                    
+                    <div className='flex w-full'>
+                        <div className='p-1 bg-purple-200 text-primary rounded-full px-2 text-[12px]'>
+                            {business.category.name}
+                        </div>
+                        <div className='ml-auto text-primary text-sm'>
+                        {'⭐'.repeat(Math.floor(business.rating))} {/* Repeats stars based on the rating */}
+                       </div>
+                    </div>
+
+
+                       
                         <h2 className='font-bold text-lg'>{business.name}</h2>
                         <h2 className='text-primary'>{business.contactPerson}</h2>
                         <h2 className='text-gray-500 text-sm'>{business.address}</h2>
+                        <h2 className='p-1 bg-green-200
+                         rounded-full px-2
+                         text-[12px]'>₹ {business.price}</h2>
                         <Button className="rounded-lg mt-3">Book Now</Button>
                     </div>
                 </Link>
