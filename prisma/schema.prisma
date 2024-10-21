@@ -4,11 +4,85 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "postgresql" // or mysql, sqlite, etc.
   url      = env("DATABASE_URL")
+}
+
+// 1. User Model
+model User {
+  user_id           Int        @id @default(autoincrement())
+  name              String
+  phone_number      String
+  address           String
+  email             String     @unique
+  password_hash     String
+  registration_date DateTime   @default(now())
+  bookings          BookingDetails[]  // One-to-many relation with BookingDetails
+  reviews           Review[]          // One-to-many relation with Review
+  favorites         Favorites[]       // Many-to-many relation with ServiceProvider through Favorites
+}
+
+// 2. Service Provider Model
+
+model ServiceProvider {
+  service_provider_id Int        @id @default(autoincrement())
+  name                String
+  phone_number        String
+  email               String     @unique
+  password_hash       String
+  registration_date   DateTime   @default(now())
+  about_me            String?
+  images              Json       // JSON object for images (urls)
+  plans               Json       // JSON object for plans (name, duration, price)
+  bookings            BookingDetails[] // One-to-many relation with BookingDetails
+  favorites           Favorites[] // Many-to-many relation with User through Favorites
+}
+
+// 3. Favorites Model (Composite Key)
+model Favorites {
+  user_id              Int
+  service_provider_id  Int
+  user                 User             @relation(fields: [user_id], references: [user_id])
+  serviceProvider      ServiceProvider  @relation(fields: [service_provider_id], references: [service_provider_id])
+
+  @@id([user_id, service_provider_id]) // Composite Primary Key
+}
+
+// 4. Booking Details Model
+model BookingDetails {
+  booking_id         Int             @id @default(autoincrement())
+  user_id            Int
+  service_provider_id Int
+  transaction_id     Int?            @unique
+  timeslot           DateTime
+  notes              String?
+  user               User            @relation(fields: [user_id], references: [user_id])
+  serviceProvider    ServiceProvider @relation(fields: [service_provider_id], references: [service_provider_id])
+  payments           Payments?
+  reviews            Review[]        // One-to-many relation with Review
+}
+
+// 5. Payments Model
+model Payments {
+  transaction_id  Int          @id @default(autoincrement())
+  booking_id      Int          @unique
+  recipient       Json         // JSON object for recipient details (name, email, phone, address)
+  booking         BookingDetails @relation(fields: [booking_id], references: [booking_id])
+}
+
+// 6. Reviews Model
+model Review {
+  review_id       Int           @id @default(autoincrement())
+  user_id         Int
+  booking_id      Int
+  review_text     String
+  rating          Int           // Rating from 1 to 5
+  user            User          @relation(fields: [user_id], references: [user_id])
+  booking         BookingDetails @relation(fields: [booking_id], references: [booking_id])
 }
