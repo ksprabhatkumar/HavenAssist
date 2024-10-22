@@ -6,19 +6,19 @@ export async function GET() {
     {
       name: "Medical",
       icon: {
-        url: "/icons/medical-icon.png"
+        url: "@/public/assets/barbar.png"
       }
     },
     {
       name: "Legal",
       icon: {
-        url: "/icons/legal-icon.png"
+        url: "@/public/assets/legal.png"
       }
     },
     {
       name: "Financial",
       icon: {
-        url: "/icons/financial-icon.png"
+        url: "@/public/assets/legal.png"
       }
     },
     {
@@ -30,7 +30,7 @@ export async function GET() {
     {
       name: "Education",
       icon: {
-        url: "/icons/education-icon.png"
+        url: "@/public/assets/tutor.png"
       }
     },
     {

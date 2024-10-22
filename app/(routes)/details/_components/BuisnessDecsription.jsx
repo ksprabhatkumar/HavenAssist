@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-
+import c1 from '@/public/assets/c1.jpg'
 function BusinessDescription({business}) {
   return business?.name&&(
     <div>
@@ -11,7 +11,8 @@ function BusinessDescription({business}) {
       <div className='grid grid-cols-2 md:grid-cols-3
       lg:grid-cols-4 gap-5 mt-5'>
         {business?.images?.map((item,index)=>(
-          <Image src={item?.url} key={index}
+          <Image src={c1} 
+          key={index}
           alt='image'
           width={700}
           height={200}

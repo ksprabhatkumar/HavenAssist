@@ -51,7 +51,9 @@ function BusinessByCategory({ params }) {
                     images: [{ url: "" }],
                     category: { name: "Medical" },
                     contactPerson: "Dr. John Doe",
-                    address: "123 Health St, Wellness City"
+                    address: "123 Health St, Wellness City",
+                    price: 1000,
+                    rating:4
                 },
                 {
                     id: "2",
@@ -59,7 +61,9 @@ function BusinessByCategory({ params }) {
                     images: [{ url: "/images/mediplus-pharmacy.jpg" }],
                     category: { name: "Medical" },
                     contactPerson: "Pharmacist Jane Doe",
-                    address: "456 Pharma Ave, MediTown"
+                    address: "456 Pharma Ave, MediTown",
+                    price: 500,
+                    rating:5
                 }
             ],
             Legal: [
@@ -69,7 +73,9 @@ function BusinessByCategory({ params }) {
                     images: [{ url: "/images/legal-advisors.jpg" }],
                     category: { name: "Legal" },
                     contactPerson: "Jane Smith",
-                    address: "789 Justice Blvd, LawTown"
+                    address: "789 Justice Blvd, LawTown",
+                    price: 500,
+                    rating:5
                 },
                 {
                     id: "4",
@@ -77,7 +83,9 @@ function BusinessByCategory({ params }) {
                     images: [{ url: "/images/law-order.jpg" }],
                     category: { name: "Legal" },
                     contactPerson: "Attorney John Smith",
-                    address: "321 Legal Ln, Justice City"
+                    address: "321 Legal Ln, Justice City",
+                    price: 500,
+                    rating:5
                 }
             ]
             // Add more categories and businesses as needed

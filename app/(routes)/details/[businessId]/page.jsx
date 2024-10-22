@@ -2,6 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import BusinessInfo from '../_components/BuisnessInfo';
 import BusinessDescription from '../_components/BuisnessDecsription';
+import SlotInput from '../_components/SlotInput';
+// import SimilarBusiness from '../_components/SimilarBusiness';
+import ReviewSection from '../_components/Review';
+import SimilarBusiness from '../_components/SimilarBusiness';
 
 function BusinessDetail({ params }) {
   const [business, setBusiness] = useState(null);
@@ -49,8 +53,18 @@ function BusinessDetail({ params }) {
             <BusinessDescription business={business} />
           </div>
           <div className=''>
-            Reviews section goes here
-            {/* <SuggestedBusinessList business={business}/> */}
+            <SlotInput business={business}/>
+           
+          </div>
+        </div>
+        
+
+        <div className='grid grid-cols-3 mt-16'>
+          <div className='bg-violet-200 py-10 border rounded-2xl  col-span-3 md:col-span-2 order-last md:order-first'>
+            <ReviewSection  />
+          </div>
+          <div className=''>
+            <SimilarBusiness business={business} />
           </div>
         </div>
       </div>

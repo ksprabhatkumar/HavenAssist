@@ -119,7 +119,7 @@ function BookingSection({children,business}) {
                 <Button key={index}
                 disabled={isSlotBooked(item.time)}
                 variant='outiline'
-                className={`border rounded-full 
+                className={`border bg-green-200 rounded-full 
                 p-2 px-3 hover:bg-primary
                  hover:text-white
                  ${selectedTime==item.time&&'bg-primary text-white'}`}

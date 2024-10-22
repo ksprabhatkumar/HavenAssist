@@ -6,13 +6,13 @@ const Hero = () => {
   return (
     <div className='flex items-center flex-col justify-center pt-14 pb-7'>
     <h2 className='font-bold text-[46px] text-center'>
-        Find Home 
-        <span className='text-primary'> Services/Repair</span>
+        Find your
+        <span className='text-primary'> Appointment</span>
         <br></br>
         Near You
     </h2>
     <h2 className='text-gray-400'>
-        Explore Best Home Service and Repair Near You !!!
+        Explore Best Home Service and Appointment Near You !!!
     </h2>
     <div className='mt-4 flex gap-3 items-center'>
     <Input placeholder='Search' 

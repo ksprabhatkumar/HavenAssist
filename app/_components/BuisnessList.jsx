@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
+import dct from '@/public/assets/dct.jpg'
 function BusinessList({businessList,title}) {
   return (
     <div className='mt-5'>
@@ -15,7 +15,8 @@ function BusinessList({businessList,title}) {
                 rounded-lg hover:shadow-lg cursor-pointer
                  hover:shadow-primary
                  hover:scale-105 transition-all ease-in-out'>
-                    <Image src={business?.images[0].url}
+                    {/* <Image src={business?.images[0].url} */}
+                    <Image src={dct}
                     alt={business.name}
                     width={500}
                     height={200}

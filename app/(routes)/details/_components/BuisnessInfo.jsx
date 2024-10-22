@@ -2,11 +2,11 @@ import { Button } from '@/components/ui/button'
 import { Clock, Mail, MapPin, Share, User } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
-
+import dct from '@/public/assets/dct.jpg'
 function BusinessInfo({business}) {
   return business?.name&&(
     <div className='md:flex gap-4 items-center'>
-      <Image src={business?.images[0]?.url}
+      <Image src={dct}
         alt={business.name}
         width={150}
         height={200}
@@ -27,7 +27,7 @@ function BusinessInfo({business}) {
       <div className='flex flex-col gap-5 items-end'>
         <Button><Share/></Button>
         <h2 className='flex gap-2 text-xl text-primary'><User/> {business.contactPerson} </h2>
-        <h2 className='flex gap-2 text-xl text-gray-500'><Clock/> Available 8:00 AM to 10:PM </h2>
+        <h2 className='flex gap-2 text-xl text-gray-500'><Clock/> Available 8:00 AM to 10:00 PM </h2>
       
       </div>
       </div>

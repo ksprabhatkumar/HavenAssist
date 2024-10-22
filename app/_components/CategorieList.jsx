@@ -2,6 +2,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import health from '@/public/assets/health.png'
+
+    const images = [
+        { url: 'assets/health.png' },
+        { url: 'assets/health.png'},
+      { url: 'assets/health.png'  },
+      { url: 'assets/barbar.png'  },
+    ];
 
 function CategoryList({categoryList}) {
   return (
@@ -13,12 +21,7 @@ function CategoryList({categoryList}) {
              bg-purple-50 p-5 rounded-lg
              cursor-pointer hover:scale-110 transition-all ease-in-out
              `}>
-                
-                <Image src={category.icon.url}
-                alt='icon'
-                width={35}
-                height={35}
-                />
+                <Image src={health} alt={category.name} width={50} height={50}/>
                 <h2 className='text-primary'>{category.name}</h2>
             </Link>
         )):

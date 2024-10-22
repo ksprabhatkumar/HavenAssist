@@ -13,7 +13,7 @@ const businesses = [
     email: 'contact@bakery.com',
     name: 'Sweet Cakes Bakery',
     images: [
-      { url: 'https://example.com/images/cake.jpg' },
+      { url: '' },
       { url: 'https://example.com/images/legal.jpg' }
 
     ],
