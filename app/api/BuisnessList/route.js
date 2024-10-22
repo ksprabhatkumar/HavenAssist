@@ -1,7 +1,50 @@
 // app/api/categories/route.js
 import { NextResponse } from 'next/server';
+import { prisma } from '../../../lib/prisma'; // Adjust the path to the correct location
+
+async function getsample() {
+  const serviceProviders = await prisma.serviceProvider.findMany({
+    select: {
+      service_provider_id: true, // Primary key
+      name: true,
+      phone_number: true,
+      email: true,
+      registration_date: true,
+      about_me: true,
+      plans: true,
+      images: true,
+      bookings: true,            // Include booking details if needed
+      favorites: true,           // Include favorites if needed
+      category: true             // Include the new category field
+    },
+  });
+
+  const getServiceProvider = serviceProviders.map((serviceProvider) => {
+    return {
+      id: serviceProvider.service_provider_id, // Keeping the id as a number
+      name: serviceProvider.name,
+      phone_number: serviceProvider.phone_number,
+      email: serviceProvider.email,
+      registration_date: serviceProvider.registration_date,
+      about_me: serviceProvider.about_me,
+      plans: serviceProvider.plans,
+      images: serviceProvider.images,
+      bookings: serviceProvider.bookings,       // You can modify how you want to structure this
+      favorites: serviceProvider.favorites,     // You can modify how you want to structure this
+      category: serviceProvider.category?.name  // Assuming category is a JSON object with a 'name' field
+    };
+  });
+
+  return getServiceProvider;
+}
+
 
 export async function GET() {
+   
+  const sample= await getsample();
+  console.log(sample);
+  
+  
     const sampleBuisnessList = [
         {
           id: "1",
@@ -18,121 +61,10 @@ export async function GET() {
           price:500,
           rating:4,
           address: "123 Health St, Wellness City"
-        },
-        {
-          id: "2",
-          name: "Legal Advisors Inc.",
-          images: [
-            {
-              url: "/images/legal-advisors.jpg"
-            }
-          ],
-          category: {
-            name: "Legal"
-          },
-          contactPerson: "Jane Smith",
-          price:500,
-          rating:3,
-          address: "456 Justice Ave, Lawtown"
-        },
-        {
-          id: "3",
-          name: "FinServ Solutions",
-          images: [
-            {
-              url: "/images/finserv-solutions.jpg"
-            }
-          ],
-          category: {
-            name: "Financial"
-          },
-          contactPerson: "Alice Johnson",
-          price:500,
-          rating:5,
-          address: "789 Finance Blvd, MoneyCity"
-        },
-        {
-          id: "4",
-          name: "Career Counseling Center",
-          images: [
-            {
-              url: "/images/career-counseling.jpg"
-            }
-          ],
-          category: {
-            name: "Counseling"
-          },
-          contactPerson: "Robert Brown",
-          price:500,
-          rating:3,
-          address: "101 Advice St, Guidance Town"
-        },
-        {
-          id: "5",
-          name: "EduPro Academy",
-          images: [
-            {
-              url: "/images/edupro-academy.jpg"
-            }
-          ],
-          category: {
-            name: "Education"
-          },
-          contactPerson: "Michael Green",
-          price:500,
-          rating:4,
-          address: "202 Learning Rd, Knowledge City"
-        },
-        {
-          id: "6",
-          name: "JobLink Employment Agency",
-          images: [
-            {
-              url: "/images/joblink-agency.jpg"
-            }
-          ],
-          category: {
-            name: "Employment"
-          },
-          contactPerson: "Emily White",
-          price:500,
-          rating:5,
-          address: "303 Opportunity St, Career City"
-        },
-        {
-          id: "7",
-          name: "Safe Haven Housing",
-          images: [
-            {
-              url: "/images/safe-haven-housing.jpg"
-            }
-          ],
-          category: {
-            name: "Housing"
-          },
-          contactPerson: "Chris Black",
-          price:500,
-          rating:3,
-          address: "404 Shelter Ln, HomeTown"
-        },
-        {
-          id: "8",
-          name: "TranspoPro Services",
-          images: [
-            {
-              url: "/images/transpopro-services.jpg"
-            }
-          ],
-          category: {
-            name: "Transportation"
-          },
-          contactPerson: "Sarah Blue",
-          price:500,
-          rating:2,
-          address: "505 Mobility Ave, Transit City"
         }
+        
       ];
       
 
-  return NextResponse.json(sampleBuisnessList);
+  return NextResponse.json(sample);
 }
