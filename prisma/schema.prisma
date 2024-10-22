@@ -30,6 +30,7 @@ model ServiceProvider {
   about_me            String?
   plans               Json?            @db.Json
   images              Json?            @db.Json
+  category            Json?            @db.Json
   bookings            BookingDetails[]
   favorites           Favorites[]
 }
